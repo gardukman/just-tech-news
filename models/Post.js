@@ -43,12 +43,10 @@ Post.init(
             allowNull: false
         },
         // also defined as a string, also has validation in the schema definition ensuring that this url is a verified link
-        post_url: {
+        content: {
             type: DataTypes.STRING,
             allowNull: false,
-            validate: {
-                isURL: true
-            }
+            
         },
         // this column is defined by integers which help determine who posted the news article. the references property establishes the relationship between this post and the user by creating a reference to the User model, specifically to the id column that is defined by the key property which is the primary key
         user_id: {
