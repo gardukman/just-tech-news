@@ -1,6 +1,3 @@
-const { response } = require("express");
-
-// verifies that the request was successful
 async function signupFormHandler(event) {
     event.preventDefault();
 
@@ -19,10 +16,11 @@ async function signupFormHandler(event) {
             headers: { 'Content-Type': 'application/json' }
         });
 
-        // check the response status
         if (response.ok) {
             console.log('success');
-        } else {
+            document.location.replace('/');
+        }
+        else {
             alert(response.statusText);
         }
     }
@@ -45,7 +43,7 @@ async function loginFormHandler(event) {
         });
 
         if (response.ok) {
-            console.log('success');
+            document.location.replace('/dashboard');
         } else {
             alert(response.statusText);
         }
@@ -53,3 +51,4 @@ async function loginFormHandler(event) {
 }
 
 document.querySelector('.signup-form').addEventListener('submit', signupFormHandler);
+document.querySelector('.login-form').addEventListener('submit', loginFormHandler);

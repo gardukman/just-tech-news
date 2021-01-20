@@ -1,7 +1,6 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
 const { Post, User, Comment } = require('../models');
-const posts = dbPostData.map(post => post.get({ plain: true }));
 
 router.get('/', (req, res) => {
     Post.findAll({
@@ -14,25 +13,15 @@ router.get('/', (req, res) => {
         include: [
             {
                 model: Comment,
-                attributes: [
-                    'id', 
-                    'comment_text', 
-                    'post_id', 
-                    'user_id', 
-                    'created_at'
-                ],
+                attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
                 include: {
                     model: User,
-                    attributes: [
-                        'username'
-                    ]
+                    attributes: ['username']
                 }
             },
             {
                 model: User,
-                attributes: [
-                    'username'
-                ]
+                attributes: ['username']
             }
         ]
     })
@@ -69,31 +58,21 @@ router.get('/post/:id', (req, res) => {
         include: [
             {
                 model: Comment,
-                attributes: [
-                    'id', 
-                    'comment_text', 
-                    'post_id', 
-                    'user_id', 
-                    'created_at'
-                ],
+                attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
                 include: {
                     model: User,
-                    attributes: [
-                        'username'
-                    ]
+                    attributes: ['username']
                 }
             },
             {
                 model: User,
-                attributes: [
-                    'username'
-                ]
+                attributes: ['username']
             }
         ]
     })
     .then(dbPostData => {
         if(!dbPostData){
-            res.status(404).json({ message: 'We could not find a post with this id'});
+            res.status(404).json({ message: 'No post with this id'});
             return;
         }
 

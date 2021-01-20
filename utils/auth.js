@@ -1,5 +1,4 @@
-// checks the authorization of the login
-const auth = (req, res, next) => {
+const withAuth = (req, res, next) => {
     if(!req.session.user_id) {
         res.redirect('/login');
     }
@@ -8,4 +7,4 @@ const auth = (req, res, next) => {
     }
 };
 
-module.exports = auth;
+module.exports = withAuth;

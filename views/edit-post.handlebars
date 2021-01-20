@@ -3,15 +3,15 @@
     <h2>Edit Post</h2>
     <form class="edit-post-form">
         <div>
-            <h4>Title:</h4>
+            <h4>Title</h4>
             <input name="post-title" type="text" value="{{post.title}}" />
         </div>
         <div>
-            <h4>Content:</h4>
+            <h4>Content</h4>
             <textarea name="post-content">{{post.content}}</textarea>
         </div>
         <div>
-            by you on {{format_date post.created_at}}
+            by you, {{format_date post.created_at}}
         </div>
         <button type="submit">Save post</button>
         <button type="button" class="delete-post-btn">Delete post</button>
@@ -20,18 +20,18 @@
 
 <br>
 
-{{!-- add comment form --}}
+{{!-- comment form --}}
 <form class="comment-form">
     <div>
         <textarea name="comment-body"></textarea>
     </div>
 
     <div>
-        <button type="submit">add comment</button>
+        <button type="submit">Add a comment</button>
     </div>
 </form>
 
-{{!-- comments form --}}
+{{!-- comment form --}}
 <div class="comments">
     {{#each post.comments}}
     <section class="comment">

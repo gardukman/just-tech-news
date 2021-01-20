@@ -1,10 +1,8 @@
-const Connection = require('mysql2/typings/mysql/lib/Connection');
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
 class Comment extends Model {}
 
-// these columns will hold the text of the comment, the id of the user who created it and id of the post it belongs to
 Comment.init(
     {
         id: {
@@ -13,7 +11,11 @@ Comment.init(
             autoIncrement: true
         },
         comment_text: {
-            type: DataTypes.STRING
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                len: [1]
+            }
         },
         user_id: {
             type: DataTypes.INTEGER,
