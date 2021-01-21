@@ -1,7 +1,7 @@
 <div class="single-card">
         <h2>{{post.title}}</h2>
         <p class="card-content">{{post.content}}</p>
-        <p class="card-foot"> Posted By {{post.user.username}}, {{format_date post.created_at}}</p>
+        <p class="card-foot"> Posted By: {{post.user.username}} on {{format_date post.created_at}}</p>
 </div>
 {{#if loggedIn}}
 <form class="comment-form">
@@ -9,9 +9,8 @@
         <textarea id="comment-textarea" name="comment-body"></textarea>
     </div>
 
-{{!-- Add comment --}}
     <div>
-        <button type="submit">Add a comment</button>
+        <button type="submit">add comment</button>
     </div>
 </form>
 {{/if}}
@@ -19,7 +18,7 @@
     {{#each post.comments}}
     <section class="comment">
         <div class="comment-user">
-            {{user.username}}, {{format_date created_at}}
+            {{user.username}} on {{format_date created_at}}
         </div>
         <div class="text">
             {{comment_text}}

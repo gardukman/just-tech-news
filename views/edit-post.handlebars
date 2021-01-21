@@ -1,17 +1,16 @@
-{{!-- edit post form --}}
 <article>
     <h2>Edit Post</h2>
     <form class="edit-post-form">
         <div>
-            <h4>Title</h4>
+            <h4>Title:</h4>
             <input name="post-title" type="text" value="{{post.title}}" />
         </div>
         <div>
-            <h4>Content</h4>
+            <h4>Content:</h4>
             <textarea name="post-content">{{post.content}}</textarea>
         </div>
         <div>
-            by you, {{format_date post.created_at}}
+            by you on {{format_date post.created_at}}
         </div>
         <button type="submit">Save post</button>
         <button type="button" class="delete-post-btn">Delete post</button>
@@ -20,18 +19,16 @@
 
 <br>
 
-{{!-- comment form --}}
 <form class="comment-form">
     <div>
         <textarea name="comment-body"></textarea>
     </div>
 
     <div>
-        <button type="submit">Add a comment</button>
+        <button type="submit">add comment</button>
     </div>
 </form>
 
-{{!-- comment form --}}
 <div class="comments">
     {{#each post.comments}}
     <section class="comment">
@@ -44,6 +41,7 @@
     </section>
     {{/each}}
 </div>
+
 
 <script src="/javascript/edit-post.js"></script>
 <script src="/javascript/delete-post.js"></script>
