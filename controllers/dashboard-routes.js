@@ -12,12 +12,12 @@ router.get('/', withAuth, (req, res) => {
             'id',
             'content',
             'title',
-            'created_at'
+            // 'created_at'
         ],
         include: [
             {
                 model: Comment,
-                attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+                attributes: ['id', 'comment_text'],
                 include: {
                     model: User,
                     attributes: ['username']
@@ -44,12 +44,11 @@ router.get('/edit/:id', withAuth, (req, res) => {
         where: {
             id: req.params.id
         },
-        attributes: ['id', 'content', 'title', 'created_at',
-        ],
+        attributes: ['id', 'content', 'title'],
         include: [
             {
                 model: Comment,
-                attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+                attributes: ['id', 'comment_text'],
                 include: {
                     model: User,
                     attributes: ['username']
